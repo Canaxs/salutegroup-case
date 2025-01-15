@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import userSlice from "./features/userSlice";
-import taskSlice  from "./features/taskSlice";
+import taskSlice from "./features/taskSlice";
+import avatarSlice from "./features/avatarSlice";
 
 
 export const makeStore = () => { 
@@ -9,6 +10,7 @@ export const makeStore = () => {
     reducer: {
       user: userSlice,
       task: taskSlice,
+      avatar: avatarSlice,
     },
     middleware: getDefaultMiddleware =>
       getDefaultMiddleware({

@@ -30,6 +30,8 @@ import { Button } from "../ui/button";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "../ui/command";
 import { cn } from "@/lib/utils";
 import { TbEditCircle } from "react-icons/tb";
+import { MdOutlineNextWeek } from "react-icons/md";
+
 
 
 
@@ -42,6 +44,7 @@ export default function TaskBar({
 }: Props) {
 
     const userRedux = useSelector((store: RootState) => store.user);
+    const avatarRedux = useSelector((store: RootState) => store.avatar);
 
     const [descEditMode, setDescEditMode] = useState(false);
     const [userEditMode, setUserEditMode] = useState(false);
@@ -56,25 +59,43 @@ export default function TaskBar({
 
     const defaultBgColor = [
         {
+            id:1,
             color: "bg-gray-500",
+            textcolor: "text-gray-500",
             status: "open"
         },
         {
+            id:2,
             color: "bg-orange-300",
+            textcolor: "text-orange-500",
             status: "progress"
         },
         {
+            id:3,
             color: "bg-blue-500",
+            textcolor: "text-blue-500",
             status: "review"
         },
         {
+            id:4,
             color: "bg-green-500",
+            textcolor: "text-green-500",
             status: "done"
         }
     ];
 
     function returnBgColor(status) {
         return defaultBgColor.filter((res) => res.status === status).map((str) => str.color);
+    }
+
+    function returnNextBgColor(status) {
+        if(status != "done") {
+            const bgColorNum = defaultBgColor.filter((res) => res.status === status).map((str) => str.id);
+            return defaultBgColor[bgColorNum[0]].textcolor;
+        }
+        else {
+            return "";
+        }
     }
 
     const {
@@ -99,6 +120,28 @@ export default function TaskBar({
     const { toast } = useToast();
 
     const dispatch = useDispatch();
+
+
+    function approveStatus(status) {
+        const statusIndex = defaultBgColor.filter((res) => res.status === status).map((str) => str.id);
+            const approveTask: TaskState = {
+                id: task.id ,
+                title: task.title,
+                description: task.description,
+                status: defaultBgColor[statusIndex[0]].status,
+                userId: task.userId,
+                taskNo: task.taskNo,
+                storyPoint: task.storyPoint,
+                startDate: task.startDate,
+                endDate: task.endDate,
+            }
+            dispatch(updateTask(approveTask));
+            toast({
+                variant: "success",
+                title: "Status field was changed successfully",
+                description: "",
+            })
+    }
 
     function approveDesc() {
         const approveTask: TaskState = {
@@ -125,7 +168,7 @@ export default function TaskBar({
         if(approveUserW === 0) {
             toast({
                 variant: "destructive",
-                title: "Lütfen Kullanıcı Atayın.",
+                title: "Please Assign User.",
                 description: "",
               })
         }
@@ -152,7 +195,7 @@ export default function TaskBar({
         else {
             toast({
                 variant: "destructive",
-                title: "Lütfen Başka Bir Kullanıcı Atayın.",
+                title: "Please Assign Another User.",
                 description: "",
               })
         }
@@ -185,20 +228,20 @@ export default function TaskBar({
             <SheetTrigger>
                 <div ref={setNodeRef} style={style} {...attributes} {...listeners}
                 className="bg-mainBackgroundColor border p-2.5 h-[80px] items-center flex flex-col justify-between rounded-sm hover:ring-2 hover:ring-inset hover:ring-blue-300 cursor-grab relative task">
-                        <span className="overflow-y-auto overflow-x-hidden whitespace-pre-wrap w-full line-clamp-1 text-sm text-start">
+                        <span className="overflow-y-auto overflow-x-hidden whitespace-pre-wrap w-full line-clamp-1 text-sm text-start max-sm:text-xs">
                                 {task.title}
                         </span>
                         <div className="flex justify-between w-full">
                             <div className={"text-white rounded-md "+returnBgColor(task.status)}>
-                                <span className="text-xs p-2">{task.status}</span>
+                                <span className="text-xs p-2 max-sm:p-1 line-clamp-1 max-sm:text-[9px]">{task.taskNo}</span>
                             </div>
                             <div className="flex gap-2 items-center">
-                                <div className="w-5 h-5 bg-gray-200 flex items-center justify-center rounded-full">
-                                    <span className="drop-shadow-md text-xs text-black">{task.storyPoint}</span>
+                                <div className="w-5 h-5 bg-gray-200 flex items-center justify-center rounded-full max-sm:w-4 max-sm:h-4">
+                                    <span className="drop-shadow-md text-xs text-black max-sm:text-[9px]">{task.storyPoint}</span>
                                 </div>
-                                <span className="text-xs">{userRedux[task.userId-1].username}</span>
-                                <div className="w-7 h-7 bg-gray-200 rounded-full flex justify-center items-center">
-                                    <img src={userRedux[task.userId-1].avatar} className="w-6 h-6"/>
+                                <span className="text-xs line-clamp-1 max-sm:text-[9px]">{userRedux[task.userId-1].username}</span>
+                                <div className="w-7 h-7 max-sm:w-5 max-sm:h-5 bg-gray-200 rounded-full flex justify-center items-center">
+                                    <img src={avatarRedux.find((res) => res.id === userRedux[task.userId-1].avatar)?.avatar} className="w-6 h-6 max-sm:w-4 max-sm:h-4"/>
                                 </div>
                             </div>
                         </div>
@@ -231,9 +274,14 @@ export default function TaskBar({
                 </SheetDescription>
                 </SheetHeader>
                 <div className="mt-4">
-                    <div className="mb-2 flex justify-between">
+                    <div className="mb-2 flex gap-3 items-center">
                         <div className={"text-white rounded-md w-auto inline-block "+returnBgColor(task.status)}>
-                            <span className="text-xs p-2">{task.status}</span>
+                            <span className="text-xs p-2">{task.status[0].toUpperCase() + task.status.slice(1)}</span>
+                        </div>
+                        <div>
+                           {task.status != "done" && <MdOutlineNextWeek title="Advance Task" className={"size-5 hover:scale-125 transition-all cursor-pointer "+returnNextBgColor(task.status)}
+                            onClick={() => approveStatus(task.status)}
+                           /> }
                         </div>
                     </div>
                     <div className="mt-4 mb-4 flex items-center gap-3">
@@ -279,7 +327,7 @@ export default function TaskBar({
                                         <TbUserEdit className="size-5 text-gray-400 drop-shadow-lg cursor-pointer hover:scale-125 transition-all" onClick={() => setUserEditMode(true)}/>
                                     </div>
                                     <div className="w-7 h-7 bg-gray-200 rounded-full flex justify-center items-center">
-                                        <img src={userRedux[task.userId-1].avatar} className="w-6 h-6"/>
+                                        <img src={avatarRedux.find((res) => res.id === userRedux[task.userId-1].avatar)?.avatar} className="w-6 h-6"/>
                                     </div>
                                     <span className="drop-shadow-md text-sm text-gray-900">{userRedux[task.userId-1].username}</span>
                                     <span className="text-[10px] text-gray-500">opened on Oct 4, 2025 </span>
@@ -295,7 +343,7 @@ export default function TaskBar({
                                             <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
                                                 <div className="flex gap-2 items-center">
                                                     <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
-                                                        {value && <img src={userRedux.find((user) => user.username === value)?.avatar} className="w-5 h-5"/>}
+                                                        {value && <img src={avatarRedux.find((res) => res.id === userRedux.find((user) => user.username === value)?.avatar)?.avatar} className="w-5 h-5"/>}
                                                     </div>
                                                     <span>{value ? userRedux.find((user) => user.username === value)?.username : "Select user"}</span>
                                                 </div>
@@ -316,7 +364,7 @@ export default function TaskBar({
                                                     }}>
                                                         <div className="flex gap-2 items-center">
                                                             <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
-                                                                <img src={user.avatar} className="w-5 h-5"/>
+                                                                <img src={avatarRedux.find((res) => res.id === user.avatar)?.avatar} className="w-5 h-5"/>
                                                             </div>
                                                             <span>{user.username}</span>
                                                         </div>

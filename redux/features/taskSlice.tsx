@@ -8,7 +8,7 @@ import { act } from "react";
 const initialState:TaskState[] = TaskData;
 
 export const taskSlice = createSlice({
-  name: "user",
+  name: "task",
   initialState,
   reducers: {
     addTask : (state , action: PayloadAction<TaskState>) => {

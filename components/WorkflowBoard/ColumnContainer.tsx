@@ -25,6 +25,8 @@ import { RootState } from "@/redux/store";
 import { cn } from "@/lib/utils";
 import { useToast } from "../ui/use-toast";
 import { addTask } from "@/redux/features/taskSlice";
+import { IoClose } from "react-icons/io5";
+
 
 
 
@@ -45,9 +47,12 @@ export default function ColumnContainer({
 
     const userRedux = useSelector((store: RootState) => store.user);
     const allTasks = useSelector((store: RootState) => store.task);
+    const avatarRedux = useSelector((store: RootState) => store.avatar);
 
     const [open, setOpen] = useState(false)
     const [value, setValue] = useState("")
+
+    const [dialogOpen , setDialogOpen] = useState(false);
 
     const [wtaskNo, setWTaskNo] = useState("");
     const [wtitle, setWTitle] = useState("");
@@ -106,12 +111,18 @@ export default function ColumnContainer({
                 endDate: wend,
             }
             dispatch(addTask(createTask));
+            setDialogOpen(false);
+            toast({
+                variant: "success",
+                title: "Task Created",
+                description: "Task No : "+wtaskNo,
+              })
         }
         else {
             toast({
                 variant: "destructive",
-                title: "Lütfen Boş Alanları Doldurun.",
-                description: "Tekrar Deneyiniz.",
+                title: "Please fill in the blank fields.",
+                description: "Try Again.",
               })
         }
     }
@@ -126,13 +137,13 @@ export default function ColumnContainer({
         <div
             ref={setNodeRef}
             style={style}
-            className=" bg-[#f4f5f7] w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col m-5">
+            className=" bg-[#f4f5f7] max-lg:basis-[90%] 2xl:basis-[21%] xl:basis-[29%] lg:basis-[43%] h-[500px] max-h-[500px] rounded-md flex flex-col m-5">
             <div
                 {...attributes}
                 {...listeners}
                 className=" bg-[#f4f5f7] text-md h-[60px] cursor-grab rounded-b-none p-3 font-bold border-columnBackgroundColor flex items-center justify-between">
                 <div className="flex gap-2 ml-1 rounded justify-between w-full">
-                    <span className="text-[#959EAE] font-normal drop-shadow-sm">
+                    <span className="text-[#959EAE] font-normal drop-shadow-sm max-lg:text-sm">
                         {column.title}
                     </span>
                     <div className="bg-gray-400 w-8 h-8 rounded-full flex justify-center items-center text-white transition-all">
@@ -154,10 +165,10 @@ export default function ColumnContainer({
                 </SortableContext>
             </div>
             {column.id === "open" ? 
-            <Dialog>
+            <Dialog open={dialogOpen}>
                 <DialogTrigger>
                     <div
-                        className="flex gap-2 items-center text-gray-400 drop-shadow-sm text-base p-2 transition-all hover:text-black">
+                        className="flex gap-2 items-center text-gray-400 drop-shadow-sm text-base p-2 transition-all hover:text-black" onClick={() => setDialogOpen(true)}>
                         + Add task
                     </div>
                 </DialogTrigger>
@@ -166,6 +177,9 @@ export default function ColumnContainer({
                     <DialogDescription>
                         Fill in the task information. Click save when you're done.
                     </DialogDescription>
+                    <div className="absolute right-4 top-4">
+                        <IoClose  className="size-6 text-black cursor-pointer transition-all hover:scale-110" onClick={() => setDialogOpen(false)}/>
+                    </div>
                     <div className="grid gap-4 py-4">
                         <div className="grid grid-cols-4 items-center gap-4">
                             <Label className="text-right">
@@ -195,7 +209,7 @@ export default function ColumnContainer({
                                     <Button variant="outline" role="combobox" aria-expanded={open} className="w-[200px] justify-between">
                                         <div className="flex gap-2 items-center">
                                             <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
-                                                {value && <img src={userRedux.find((user) => user.username === value)?.avatar} className="w-5 h-5"/>}
+                                                {value && <img src={avatarRedux.find((res) => res.id === userRedux.find((user) => user.username === value)?.avatar)?.avatar} className="w-5 h-5"/>}
                                             </div>
                                             <span>{value ? userRedux.find((user) => user.username === value)?.username : "Select user"}</span>
                                         </div>
@@ -216,7 +230,7 @@ export default function ColumnContainer({
                                             }}>
                                                 <div className="flex gap-2 items-center">
                                                     <div className="w-6 h-6 rounded-full bg-gray-300 flex items-center justify-center">
-                                                        <img src={user.avatar} className="w-5 h-5"/>
+                                                        <img src={avatarRedux.find((res) => res.id === user.avatar)?.avatar} className="w-5 h-5"/>
                                                     </div>
                                                     <span>{user.username}</span>
                                                 </div>
