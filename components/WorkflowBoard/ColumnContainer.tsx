@@ -67,8 +67,7 @@ export default function ColumnContainer({
         attributes,
         listeners,
         transform,
-        transition,
-        isDragging,
+        transition
     } = useSortable({
         id: column.id,
         data: {
@@ -81,16 +80,6 @@ export default function ColumnContainer({
         transition,
         transform: CSS.Transform.toString(transform),
     };
-
-    if (isDragging) {
-        return (
-            <div
-                ref={setNodeRef}
-                style={style}
-                className=" bg-columnBackgroundColor opacity-40 border-2 border-pink-500 w-[350px] h-[500px] max-h-[500px] rounded-md flex flex-col "
-            ></div>
-        );
-    }
 
     const { toast } = useToast();
 
