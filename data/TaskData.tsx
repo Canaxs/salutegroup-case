@@ -5,36 +5,54 @@ export const TaskData: TaskState[] = [
         id:1,
         title: "Lorem ipsum dolor sit amet",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum eget lorem a rhoncus. Quisque mollis magna at porttitor efficitur. Maecenas condimentum, sem at consectetur tristique",
-        status: "Open"
+        status: "open",
+        userId: 2,
+        taskNo: "CE-34",
+        storyPoint: 38,
     },
     {
         id:2,
         title: "Lorem ipsum dolor sit amet",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum eget lorem a rhoncus. Quisque mollis magna at porttitor efficitur. Maecenas condimentum, sem at consectetur tristique",
-        status: "Open"
+        status: "open",
+        userId: 2,
+        taskNo: "YI-36",
+        storyPoint: 16,
     },
     {
         id:3,
         title: "Lorem ipsum dolor sit amet",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum eget lorem a rhoncus. Quisque mollis magna at porttitor efficitur. Maecenas condimentum, sem at consectetur tristique",
-        status: "In Progress"
+        status: "progress",
+        userId: 1,
+        taskNo: "YU-12",
+        storyPoint: 4,
     },
     {
         id:4,
         title: "Lorem ipsum dolor sit amet",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum eget lorem a rhoncus. Quisque mollis magna at porttitor efficitur. Maecenas condimentum, sem at consectetur tristique",
-        status: "In Progress"
+        status: "progress",
+        userId: 3,
+        taskNo: "ES-4",
+        storyPoint: 8,
     },
     {
         id:5,
         title: "Lorem ipsum dolor sit amet",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum eget lorem a rhoncus. Quisque mollis magna at porttitor efficitur. Maecenas condimentum, sem at consectetur tristique",
-        status: "In Review"
+        status: "review",
+        userId: 4,
+        taskNo: "ER-21",
+        storyPoint: 64,
     },
     {
         id:6,
         title: "Lorem ipsum dolor sit amet",
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vestibulum eget lorem a rhoncus. Quisque mollis magna at porttitor efficitur. Maecenas condimentum, sem at consectetur tristique",
-        status: "Done"
+        status: "done",
+        userId: 5,
+        taskNo: "AC-43",
+        storyPoint: 12,
     },
 ];

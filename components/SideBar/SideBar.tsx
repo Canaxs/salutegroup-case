@@ -17,7 +17,7 @@ export default function SideBar() {
     const [isDropDown,setIsDropDown] = useState(true);
 
     return (
-        <div className="h-full w-full">
+        <div className="h-full">
                 <motion.div layout 
                 className={isDropDown ? "lg:w-[300px] md:w-[250px] sm:w-[150px] max-sm:w-[100px] sticky h-full m-0 p-0" : "sticky lg:w-[100px] md:w-[75px] sm:w-[50px] max-sm:w-[25px] h-full m-0 p-0"}
                 >

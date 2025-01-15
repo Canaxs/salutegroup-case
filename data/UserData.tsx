@@ -4,31 +4,31 @@ export const userData: UserState[] = [
     {
         id:1,
         username:"flash",
-        avatar:""
+        avatar:"flash.png"
     },
     {
         id:2,
         username:"batman",
-        avatar:""
+        avatar:"batman.png"
     },
     {
         id:3,
         username:"arrow",
-        avatar:""
+        avatar:"arrow.png"
     },
     {
         id:4,
         username:"ironman",
-        avatar:""
+        avatar:"iron.png"
     },
     {
         id:5,
         username:"hulk",
-        avatar:""
+        avatar:"hulk.png"
     },
     {
         id:6,
         username:"spiderman",
-        avatar:""
+        avatar:"spider.png"
     }
 ] 
