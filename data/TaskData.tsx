@@ -9,6 +9,8 @@ export const TaskData: TaskState[] = [
         userId: 2,
         taskNo: "CE-34",
         storyPoint: 38,
+        startDate: new Date(),
+        endDate: new Date(),
     },
     {
         id:2,
@@ -18,6 +20,8 @@ export const TaskData: TaskState[] = [
         userId: 2,
         taskNo: "YI-36",
         storyPoint: 16,
+        startDate: new Date(),
+        endDate: new Date(),
     },
     {
         id:3,
@@ -27,6 +31,8 @@ export const TaskData: TaskState[] = [
         userId: 1,
         taskNo: "YU-12",
         storyPoint: 4,
+        startDate: new Date(),
+        endDate: new Date(),
     },
     {
         id:4,
@@ -36,6 +42,8 @@ export const TaskData: TaskState[] = [
         userId: 3,
         taskNo: "ES-4",
         storyPoint: 8,
+        startDate: new Date(),
+        endDate: new Date(),
     },
     {
         id:5,
@@ -45,6 +53,8 @@ export const TaskData: TaskState[] = [
         userId: 4,
         taskNo: "ER-21",
         storyPoint: 64,
+        startDate: new Date(),
+        endDate: new Date(),
     },
     {
         id:6,
@@ -54,5 +64,7 @@ export const TaskData: TaskState[] = [
         userId: 5,
         taskNo: "AC-43",
         storyPoint: 12,
+        startDate: new Date(),
+        endDate: new Date(),
     },
 ];

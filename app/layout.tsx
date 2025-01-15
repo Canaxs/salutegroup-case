@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 /*const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body className={`w-full h-full`} style={{fontFamily: 'Poppins,sans-serif'}}>
         <StoreProvider>
           {children}
+          <Toaster />
         </StoreProvider>
       </body>
     </html>

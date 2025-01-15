@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TaskState } from "@/types/taskInterface"; 
 import { TaskData } from "@/data/TaskData";
 import { IdAndStatus } from "@/types/IdAndStatus";
+import { act } from "react";
 
 
 const initialState:TaskState[] = TaskData;
@@ -11,7 +12,7 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask : (state , action: PayloadAction<TaskState>) => {
-        state.push(action.payload);
+        state = [...state , action.payload];
         return state;
     },
     setTasks: (state , action: PayloadAction<TaskState[]>) => {

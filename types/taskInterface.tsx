@@ -6,4 +6,6 @@ export interface TaskState {
     userId: number,
     taskNo: string,
     storyPoint: number,
+    startDate: Date,
+    endDate: Date
 }

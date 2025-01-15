@@ -10,6 +10,10 @@ export const makeStore = () => {
       user: userSlice,
       task: taskSlice,
     },
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
   });
 }
 

@@ -132,6 +132,8 @@ export default function Workflowboard() {
                     userId: tasks[activeIndex].userId,
                     taskNo: tasks[activeIndex].taskNo,
                     storyPoint: tasks[activeIndex].storyPoint,
+                    startDate: tasks[activeIndex].startDate,
+                    endDate: tasks[activeIndex].endDate,
                 }
                 dispatch(updateTask(oneTasks));
                 /*
@@ -155,6 +157,8 @@ export default function Workflowboard() {
                 userId: tasks[activeIndex].userId,
                 taskNo: tasks[activeIndex].taskNo,
                 storyPoint: tasks[activeIndex].storyPoint,
+                startDate: tasks[activeIndex].startDate,
+                endDate: tasks[activeIndex].endDate,
             }
             dispatch(updateTask(twoTasks));
             /*
