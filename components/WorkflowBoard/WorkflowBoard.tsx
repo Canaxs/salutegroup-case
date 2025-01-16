@@ -37,6 +37,7 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { UserState } from "@/types/userInterface";
 import { useToast } from "../ui/use-toast";
+import AvatarList from "../AvatarList/AvatarList";
 
 const defaultCols: Column[] = [
     {
@@ -213,7 +214,7 @@ export default function Workflowboard() {
           <div className="inline-block ml-5 relative left-[3%] mb-4 mt-10">
             <h1 className="text-3xl drop-shadow font-medium text-gray-700 max-lg:text-xl">Board</h1>
           </div>
-            <div className="mb-2 flex gap-3 items-center">
+            <div className="mb-2 flex gap-3 items-center flex-wrap">
               <div className="flex rounded-xl shadow p-1 bg-white border-2 ml-5 relative left-[3%]">
                 <input name="episodequery" id="title" className="border-white text-sm outline-none border-0 w-full rounded-xl p-1 cursor-no-drop" type="text" placeholder="Designed for Display only" />
                 <button type="submit" className="rounded-xl text-white text-xl p-1 ml-2">
@@ -223,7 +224,7 @@ export default function Workflowboard() {
                     </svg>
                   </span>
                 </button>
-              </div> 
+              </div>
               <div className="ml-[3%]">
                 <Dialog open={dialogOpen}>
                   <DialogTrigger>
@@ -290,6 +291,9 @@ export default function Workflowboard() {
                   </DialogContent>
                 </Dialog>
               </div>
+              <div className="w-[130px] max-sm:ml-[3%] max-sm:mt-5 h-full">
+                  <AvatarList />
+              </div> 
             </div>
             <div className="flex">
                 <DndContext
