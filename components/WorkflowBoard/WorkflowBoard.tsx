@@ -252,7 +252,7 @@ export default function Workflowboard() {
                                 <div className="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center">
                                    {value && <img src={avatarRedux.find((avatar) => avatar.avatar === value)?.avatar} className="w-5 h-5"/>}
                                   </div>
-                                              <span>{value ? avatarRedux.find((avatar) => avatar.avatar === value)?.avatar : "Select user"}</span>
+                                              <span>{value ? avatarRedux.find((avatar) => avatar.avatar === value)?.avatar : "Select avatar"}</span>
                                           </div>
                                       <ChevronsUpDown className="opacity-50" />
                                       </Button>

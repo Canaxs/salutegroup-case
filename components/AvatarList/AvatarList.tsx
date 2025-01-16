@@ -14,19 +14,18 @@ export default function AvatarList() {
         <div className="cursor-pointer relative" title="Users in the project">
             <Dialog>
                 <DialogTrigger>
-                    <div className="flex relative items-center justify-center mb-[6px] hover:rotate-2 hover:scale-110 transition-all">
+                    <div className="flex relative z-50 items-center justify-center mb-[6px] hover:rotate-2 hover:scale-110 transition-all">
                         {userRedux.map((user,index) => index < 5 && 
-                            <div className={"w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center absolute opacity-40"} key={"img"+index} style={{left: (index+1)*17 , zIndex: index}}>
-                                <img src={avatarRedux.find((avatar) => avatar.id === user.avatar)?.avatar} className={"w-7 h-7"}/>
+                            <div className={"w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center absolute opacity-100 drop-shadow-lg"} key={"img"+index} style={{left: (index+1)*30 , zIndex: (index+1)*-2}}>
+                                <img src={avatarRedux.find((avatar) => avatar.id === user.avatar)?.avatar} className={"w-9 h-9"}/>
                             </div>
                         )}
                         {userRedux.length > 5 && 
-                            <div className="absolute left-24 z-30 drop-shadow-lg font-medium text-xl flex gap-1 text-black">
+                            <div className="absolute left-[186px] w-9 h-9 z-30 drop-shadow-lg font-medium text-lg flex items-center justify-center gap-1 text-gray-500 rounded-full bg-gray-200">
                                 <span>+</span>
                                 <span>{userRedux.length-5}</span>
                             </div>
                         }
-                        <div className="absolute w-28 rounded-2xl left-[17px] h-9 bg-gray-500 opacity-30 z-10"></div>
                     </div>
                 </DialogTrigger>
                 <DialogContent>
