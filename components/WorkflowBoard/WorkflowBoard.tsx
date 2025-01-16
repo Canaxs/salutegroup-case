@@ -38,6 +38,7 @@ import { Input } from "../ui/input";
 import { UserState } from "@/types/userInterface";
 import { useToast } from "../ui/use-toast";
 import AvatarList from "../AvatarList/AvatarList";
+import { motion } from "motion/react";
 
 const defaultCols: Column[] = [
     {
@@ -210,7 +211,11 @@ export default function Workflowboard() {
 
 
     return (
-        <div className="w-full h-full max-2xl:h-auto">
+        <motion.div layout
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.125 }}
+        className="w-full h-full max-2xl:h-auto sticky">
           <div className="inline-block ml-5 relative left-[3%] mb-4 mt-10">
             <h1 className="text-3xl drop-shadow font-medium text-gray-700 max-lg:text-xl">Board</h1>
           </div>
@@ -315,6 +320,6 @@ export default function Workflowboard() {
                     </SortableContext>
                 </DndContext>
             </div>
-        </div>
+        </motion.div>
     )
 }

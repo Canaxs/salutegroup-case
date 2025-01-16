@@ -12,17 +12,16 @@ const sideBarNameSpaces = {
     description: "Business Project"
 };
 
-export default function SideBar() { 
+export default function SideBar(props) { 
 
-    const [isDropDown,setIsDropDown] = useState(true);
 
     return (
         <div className="h-full max-2xl:h-auto">
                 <motion.div layout 
-                className={isDropDown ? "lg:w-[300px] md:w-[250px] sm:w-[150px] max-sm:w-[100px] sticky h-full m-0 p-0" : "sticky lg:w-[100px] md:w-[75px] sm:w-[50px] max-sm:w-[25px] h-full m-0 p-0"}
+                className={props.isDropDown ? "lg:w-[300px] md:w-[250px] sm:w-[150px] max-sm:w-[100px] sticky h-full m-0 p-0" : "sticky lg:w-[100px] md:w-[75px] sm:w-[50px] max-sm:w-[25px] h-full m-0 p-0"}
                 >
                     <div className="bg-gray-100 h-full w-full">
-                        <motion.div className={isDropDown ? "flex" : "flex justify-center"}
+                        <motion.div className={props.isDropDown ? "flex" : "flex justify-center"}
                         initial={{ opacity: 0, y: 12 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.125 }}
@@ -31,7 +30,7 @@ export default function SideBar() {
                                 <div className="lg:w-10 lg:h-10 md:w-8 md:h-8 sm:w-6 sm:h-6 max-sm:w-5 max-sm:h-5 rounded-full flex justify-center">
                                     <img src="https://static.cdnlogo.com/logos/j/41/jira.svg" className="w-full h-full"/>
                                 </div>
-                                {isDropDown && (
+                                {props.isDropDown && (
                                     <motion.div layout 
                                         className="flex flex-col justify-around ml-3 max-sm:ml-2"
                                         initial={{ opacity: 0, y: 12 }}
@@ -44,7 +43,7 @@ export default function SideBar() {
                                 )}
                             </div>
                         </motion.div>
-                        {isDropDown && (
+                        {props.isDropDown && (
                         <motion.div className="lg:mt-5 md:mt-4 sm:mt-3 max-sm:mt-2 lg:text-base md:text-sm sm:text-xs max-sm:text-[9px]"
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -74,7 +73,7 @@ export default function SideBar() {
                             </ul>
                         </motion.div>
                         )}
-                        {!isDropDown && (
+                        {!props.isDropDown && (
                             <motion.div className="lg:mt-5 md:mt-4 sm:mt-3 max-sm:mt-2 lg:text-base md:text-sm sm:text-xs max-sm:text-[9px]"
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -90,14 +89,14 @@ export default function SideBar() {
                             </motion.div>
                         )}
                         <div className="flex w-full justify-center">
-                            {isDropDown && (
-                                <div className="absolute bottom-2 flex items-center cursor-pointer hover:scale-110 transition-all" onClick={() => setIsDropDown(false)}>
+                            {props.isDropDown && (
+                                <div className="absolute bottom-2 flex items-center cursor-pointer hover:scale-110 transition-all" onClick={() => props.setIsDropDown(false)}>
                                     <RiArrowLeftWideFill className="size-8"/>
                                     <span className="drop-shadow">Hide</span>
                                 </div>
                             )}
-                            {!isDropDown && (
-                                <div className="absolute bottom-2 flex items-center cursor-pointer hover:scale-110 transition-all" onClick={() => setIsDropDown(true)}>
+                            {!props.isDropDown && (
+                                <div className="absolute bottom-2 flex items-center cursor-pointer hover:scale-110 transition-all" onClick={() => props.setIsDropDown(true)}>
                                     <RiArrowRightWideFill className="size-8"/>
                                 </div>
                             )}

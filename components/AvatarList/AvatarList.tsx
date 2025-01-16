@@ -21,7 +21,7 @@ export default function AvatarList() {
                             </div>
                         )}
                         {userRedux.length > 5 && 
-                            <div className="absolute left-[186px] w-9 h-9 z-30 drop-shadow-lg font-medium text-lg flex items-center justify-center gap-1 text-gray-500 rounded-full bg-gray-200">
+                            <div className="absolute left-[181px] w-9 h-9 drop-shadow-lg font-medium text-lg flex items-center justify-center gap-1 text-gray-500 rounded-full bg-gray-200" style={{zIndex: "-20"}}>
                                 <span>+</span>
                                 <span>{userRedux.length-5}</span>
                             </div>
