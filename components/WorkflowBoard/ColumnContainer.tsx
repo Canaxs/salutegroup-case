@@ -118,7 +118,7 @@ export default function ColumnContainer({
 
     function getTaskStoryPoint() {
         let sum = 0;
-        const points = allTasks.filter((task) => task.status === column.id).forEach((obj) => sum += obj.storyPoint);
+        allTasks.filter((task) => task.status === column.id).forEach((obj) => sum += obj.storyPoint);
         return sum;
     }
 
@@ -164,7 +164,7 @@ export default function ColumnContainer({
                 <DialogContent>
                     <DialogTitle>+ Add Task</DialogTitle>
                     <DialogDescription>
-                        Fill in the task information. Click save when you're done.
+                        Fill in the task information. Click save when you re done.
                     </DialogDescription>
                     <div className="absolute right-4 top-4">
                         <IoClose  className="size-6 text-black cursor-pointer transition-all hover:scale-110" onClick={() => setDialogOpen(false)}/>

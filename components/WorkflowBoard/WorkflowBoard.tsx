@@ -1,33 +1,24 @@
-import { addUser , setUser } from "@/redux/features/userSlice";
+import { addUser  } from "@/redux/features/userSlice";
 import { RootState } from "@/redux/store";
 import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { userData } from "@/data/UserData";
 import {
     DndContext,
-    closestCenter,
-    KeyboardSensor,
     PointerSensor,
     useSensor,
     useSensors,
     DragStartEvent,
-    UniqueIdentifier,
-    DragMoveEvent,
     DragEndEvent,
     DragOverEvent,
   } from "@dnd-kit/core";
   import {
     arrayMove,
     SortableContext,
-    sortableKeyboardCoordinates,
-    verticalListSortingStrategy,
   } from "@dnd-kit/sortable";
 import { TaskState } from "@/types/taskInterface";
 import ColumnContainer from "./ColumnContainer";
 import { Column } from "@/types/columnInterface";
-import { clearTask, updateTask } from "@/redux/features/taskSlice";
-import { IdAndStatus } from "@/types/IdAndStatus";
-import { TaskData } from "@/data/TaskData";
+import { updateTask } from "@/redux/features/taskSlice";
 import { Button } from "../ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { IoClose } from "react-icons/io5";
@@ -241,7 +232,7 @@ export default function Workflowboard() {
                   <DialogContent>
                     <DialogTitle>+ Add User</DialogTitle>
                     <DialogDescription>
-                        Fill in the user information. Click save when you're done.
+                        Fill in the user information. Click save when you re done.
                     </DialogDescription>
                     <div className="absolute right-4 top-4">
                        <IoClose  className="size-6 text-black cursor-pointer transition-all hover:scale-110" onClick={() => setDialogOpen(false)}/>

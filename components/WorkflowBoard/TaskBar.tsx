@@ -55,7 +55,6 @@ export default function TaskBar({
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
-    const [wuser, setWUser] = useState<number>(0);
 
     const defaultBgColor = [
         {
