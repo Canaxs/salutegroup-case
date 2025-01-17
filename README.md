@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+[![Contributors][contributors-shield]][contributors-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-First, run the development server:
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/Canaxs/salutegroup-case">
+    <img src="https://static.cdnlogo.com/logos/j/41/jira.svg" alt="Logo" width="150" height="150">
+  </a>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<h3 align="center">SaluteGroup Scrum Board</h3>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+It is a project application taken from Salute Group company.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Vercel : salutegroup-case.vercel.app
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## About
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+* Drag and drop feature of tasks between columns
+* Columns can be relocated
+* Task drop-down detail fields for tasks
+* Component to create a task
+* Button to create a user
+* Changeable description, story point, users and status of tasks
+* Manageable states with Redux
+* Flexible and animated side bar
+* Listing the users assigned to the scrum board
+* Changing the status of tasks as the columns change
+* Responsive Design
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Technologies used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* NextJS 14.2
+* ShadcnUI
+* Typescript
+* Redux
+* TailwindCSS
+* Eslint
+* Dnd-Kit
+* Toaster
+* React-Icons
+* Framer-Motion
+
+
+
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+
+
+<!-- CONTACT -->
+## Contact
+
+Mail and Twitter - [@your_twitter](https://twitter.com/cana_meric) - mmericcana@gmail.com
+
+Project Link: [https://github.com/Canaxs/salutegroup-case](https://github.com/Canaxs/salutegroup-case)
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
+[contributors-url]: https://github.com/Canaxs/salutegroup-case
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/mericcana/
+
